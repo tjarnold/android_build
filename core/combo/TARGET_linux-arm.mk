@@ -91,10 +91,12 @@ ifeq ($(ARCH_ARM_HAVE_THUMB_SUPPORT),true)
     TARGET_thumb_CFLAGS :=  -mthumb \
                             -O3 \
                             -fomit-frame-pointer \
-                            -funsafe-math-optimizations \
-                            -fstrict-aliasing \
-                            -Wstrict-aliasing=2 \
-                            -Werror=strict-aliasing
+   			    -fno-strict-aliasing     
+				#added untilcamera issues are pimpointed
+#  removed until camera      -funsafe-math-optimizations 
+#  issues are pinpointed     -fstrict-aliasing 
+#                            -Wstrict-aliasing=2 
+#                            -Werror=strict-aliasing
     endif
 else
     TARGET_thumb_CFLAGS := $(TARGET_arm_CFLAGS)
@@ -183,17 +185,19 @@ else
 TARGET_GLOBAL_CFLAGS += -mno-thumb-interwork
 endif
 
-TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden $(call cc-option,-std=gnu++11)
+# hold off on gnu++11 while resolving camera issues
+TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden # $(call cc-option,-std=gnu++11)
 
 # More flags/options can be added here
 TARGET_RELEASE_CFLAGS := \
 			-DNDEBUG \
 			-g \
 			-Wstrict-aliasing=2 \
-			-Werror=strict-aliasing \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
 			-frename-registers
+#removed while resolving camera issues
+# 			-Werror=strict-aliasing \
 
 libc_root := bionic/libc
 libm_root := bionic/libm
