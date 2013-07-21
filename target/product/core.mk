@@ -128,7 +128,8 @@ PRODUCT_PACKAGES += \
     mms-common \
     zoneinfo.dat \
     zoneinfo.idx \
-    zoneinfo.version
+    zoneinfo.version \
+    CMFileManager
 
 PRODUCT_COPY_FILES += \
     system/core/rootdir/init.usb.rc:root/init.usb.rc \
