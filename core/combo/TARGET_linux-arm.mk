@@ -185,8 +185,12 @@ else
 TARGET_GLOBAL_CFLAGS += -mno-thumb-interwork
 endif
 
+<<<<<<< HEAD
 # hold off on gnu++11 while resolving camera issues
 TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden # $(call cc-option,-std=gnu++11)
+=======
+TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden $(call cc-option,-std=gnu++11)
+>>>>>>> 416eae1... Added back in, this does not affect the use of the camera
 
 # More flags/options can be added here
 TARGET_RELEASE_CFLAGS := \
